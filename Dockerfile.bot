@@ -1,0 +1,31 @@
+# Dockerfile.bot
+
+# Use a lightweight Python 3.9 image as the base
+FROM python:3.9-slim-buster
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy just the requirements.txt file first
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the bot application code and all necessary prediction files
+# This ensures all imports resolve correctly even if the bot is just a client.
+COPY bot.py .
+COPY predictor.py .
+COPY h2h_collector.py .
+COPY pattern_detector.py .
+COPY basketball_model.py .
+COPY football_model.py .
+COPY hockey_model.py .
+COPY volleyball_model.py .
+COPY cricket_model.py .
+COPY tennis_model.py .
+
+
+# Command to run the Telegram bot
+# This bot uses long-polling, so it doesn't need to expose a port.
+CMD ["python", "bot.py"]
