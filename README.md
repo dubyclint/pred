@@ -1,4 +1,4 @@
-#pred
+
 🔮 Sports Match Prediction Agent
 This project implements an AI agent powered by Google's Gemini ADK to predict the outcomes of various sports matches. It leverages a modular architecture with dedicated components for data collection, pattern detection, and sport-specific prediction models.
 
